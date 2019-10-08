@@ -29,7 +29,8 @@ namespace ApplicationPartTest
             if (!File.Exists(path))
                 throw new FileNotFoundException($"File not found: {path}");
 
-            var loader = PluginLoader.CreateFromAssemblyFile(path);
+            //var loader = PluginLoader.CreateFromAssemblyFile(path);
+            var loader = PluginLoader.CreateFromAssemblyFile(path, PluginLoaderOptions.PreferSharedTypes);
             var pluginAssembly = loader.LoadDefaultAssembly();
 
             var partFactory = ApplicationPartFactory.GetApplicationPartFactory(pluginAssembly);
